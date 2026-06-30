@@ -1,5 +1,7 @@
 from flask import Flask, jsonify, request
 import csv
+import os
+
 
 app = Flask(__name__)
 
@@ -68,4 +70,8 @@ def get_place_by_id(place_id):
 # Run the backend local server
 if __name__ == '__main__':
     # debug=True allows the server to auto-reload whenever you make code changes
-    app.run(debug=True, port=5000)
+   app.run(
+        host="0.0.0.0",
+        port=int(os.environ.get("PORT", 5000)),
+        debug=False
+    )
